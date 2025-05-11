@@ -34,10 +34,12 @@ def countSubsetSumK(arr,dp,n,target):
             dp[i][tar] = pick + not_pick
     return dp[n-1][target]
 
-arr = [1,2,2,3]
-target = 3
+arr = [0,0,1]
+target = 1
 n = len(arr)
 dp = [[0 for _ in range(target+1)] for _ in range(n)]
 print(countSubsetSumK(arr,dp,n,target))
+
+## Super edge case - [0,0,1] , target = 1 ; think of the reason next time when  you revise 
 
 
