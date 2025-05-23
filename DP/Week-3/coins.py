@@ -42,3 +42,30 @@
 # target = 7
 # dp = [[-1 for _ in range(target + 1)] for _ in range(n)]
 # print(minimum_coins(arr,n-1,target,dp))
+
+#APPROACH - 3
+
+def minimum_coins(arr,dp,n,target):
+    for i in range(target + 1):
+        if i % arr[0] == 0:
+            dp[0][i] = i // arr[0]
+        else:
+            dp[0][i] = int(1e9)
+    for i in range(1,n):
+        for target in range(1,target+1):
+            not_pick = dp[i-1][target]
+            pick = int(1e9)  
+            if arr[i] <= target:
+                pick = 1 + dp[i][target - arr[i]]
+            dp[i][target] = min(not_pick,pick)
+    ans = dp[n-1][target]
+    if ans >= 1e9:
+        return -1
+    return ans
+    
+
+arr = [1,2,3]
+n = len(arr)
+target = 7
+dp = [[1e9 for _ in range(target + 1)] for _ in range(n)]
+print(minimum_coins(arr,dp,n,target))
