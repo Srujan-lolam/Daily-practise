@@ -15,4 +15,7 @@ def stock_2(prices):
     return getMaxProfit(0,0)
 prices = [1,2,4]
 print(stock_2(prices))
+
+# //There are many variants on this problem . solved all of them in leetcode as most of them are unsolved before 
+
     
